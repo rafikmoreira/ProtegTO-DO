@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       render json: {error: "Dados inválidos"}
     end
   end
-
+  
   # LOGGING IN
   def login
     @user = User.find_by(email: params[:email])

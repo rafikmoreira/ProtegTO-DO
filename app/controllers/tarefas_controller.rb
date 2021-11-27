@@ -2,7 +2,7 @@ class TarefasController < ApplicationController
     before_action :is_creator, only: [:destroy, :update]
 
     def index
-      @tarefa = Tarefa.where("visibilidade=? OR user_id=?", 0, @user.id)
+      @tarefa = Tarefa.where("visibilidade=? OR user_id=?", 0, @user.id).order("created_at DESC")
       @tarefa = @tarefa.where(status: 1) if params[:completed]
       @tarefa = @tarefa.where(user_id: @user.id) if params[:private]
       render json: @tarefa, status: :ok
