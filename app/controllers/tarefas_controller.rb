@@ -33,7 +33,7 @@ class TarefasController < ApplicationController
   
     def destroy
       @tarefa = Tarefa.find(params[:id])
-      tarefa.destroy
+      @tarefa.destroy
       render status: :ok
     end
 
